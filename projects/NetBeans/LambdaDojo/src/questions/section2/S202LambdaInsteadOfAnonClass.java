@@ -28,6 +28,12 @@ public class S202LambdaInsteadOfAnonClass {
                 return Files.readAllLines(path);
             }
         };
+        callable = () ->
+        {
+            Path path = Paths.get("src/questions/section2/S02LambdaInsteadOfAnonClass.java");
+            return Files.readAllLines(path);
+        };
+        callable = () -> Files.readAllLines(Paths.get("src/questions/section2/S02LambdaInsteadOfAnonClass.java"));
 
         ExecutorService executor = Executors.newFixedThreadPool(1);
 

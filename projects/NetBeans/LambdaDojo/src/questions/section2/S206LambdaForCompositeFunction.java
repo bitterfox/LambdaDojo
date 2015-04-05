@@ -63,6 +63,9 @@ public class S206LambdaForCompositeFunction {
                 }
             }
         };
+        comparator = Comparator
+                .comparing(Person::getLast)
+                .thenComparing(Person::getFirst);
 
         Collections.sort(persons, comparator);
         System.out.println(persons);

@@ -29,6 +29,19 @@ public class S203LambdaInsteadOfAnonClass {
                 }
             }
         };
+        
+        runnable = () ->
+        {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+            for (;;) {
+                try {
+                    TimeUnit.SECONDS.sleep(1);
+                    System.out.println(LocalTime.now().format(formatter));
+                } catch (InterruptedException ex) {
+                    return;
+                }
+            }
+        };
 
         ExecutorService executor = Executors.newFixedThreadPool(1);
 

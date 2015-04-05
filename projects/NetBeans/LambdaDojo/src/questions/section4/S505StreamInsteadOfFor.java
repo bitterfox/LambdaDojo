@@ -1,8 +1,12 @@
 package questions.section4;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.stream.Stream;
 
 public class S505StreamInsteadOfFor {
 
@@ -26,6 +30,17 @@ public class S505StreamInsteadOfFor {
             System.out.println(wordCount);
         } catch (IOException ex) {
             // 例外処理
+        }
+        
+        try(Stream<String> lines = new BufferedReader(new FileReader(filename)).lines())
+        {
+            System.out.println(lines
+                    .mapToInt(l -> l.split("[\\.,\\?; ]").length)
+                    .sum());
+        }
+        catch (FileNotFoundException ex)
+        {
+            Logger.getLogger(S505StreamInsteadOfFor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

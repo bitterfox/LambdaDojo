@@ -14,6 +14,7 @@ public class S302ForEachInsteadOfFor {
         for (Integer number: numbers) {
             sum += number;
         }
+        sum = numbers.stream().reduce(0, Integer::sum);
         System.out.println(sum);
     }
     

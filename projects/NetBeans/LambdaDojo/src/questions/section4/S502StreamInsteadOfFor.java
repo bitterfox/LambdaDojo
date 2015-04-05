@@ -2,6 +2,8 @@ package questions.section4;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class S502StreamInsteadOfFor {
 
@@ -17,6 +19,19 @@ public class S502StreamInsteadOfFor {
             sum += x;
         }
         System.out.println(sum);
+        
+        System.out.println(numbers.stream()
+                .collect(Collectors.summingInt(i -> i)));
+        System.out.println(numbers.stream()
+                .collect(Collectors.summarizingInt(i -> i)));
+        System.out.println(numbers.stream()
+                .mapToInt(i -> i)
+                .sum());
+        System.out.println(numbers.stream()
+                .mapToInt(i -> i)
+                .summaryStatistics()
+                .getSum());
+        
     }
 
     public static void main(String[] args) {

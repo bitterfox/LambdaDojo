@@ -2,6 +2,7 @@ package questions.section4;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class S501StreamInsteadOfFor {
 
@@ -17,6 +18,15 @@ public class S501StreamInsteadOfFor {
             }
         }
         System.out.println();
+        
+        numbers.stream()
+                .filter(n -> n % 2 == 0)
+                .forEach(n -> System.out.print(n + " "));
+        
+        System.out.println(numbers.stream()
+                .filter(n -> n % 2 == 0)
+                .map(Object::toString)
+                .collect(Collectors.joining(" ")));
     }
 
     public static void main(String[] args) {

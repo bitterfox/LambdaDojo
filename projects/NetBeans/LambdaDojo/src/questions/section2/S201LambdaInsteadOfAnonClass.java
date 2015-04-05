@@ -21,6 +21,9 @@ public class S201LambdaInsteadOfAnonClass {
                 return Integer.compare(x, y);
             }
         };
+        comparator = (x, y) -> Integer.compare(x, y);
+        comparator = Integer::compare;
+        comparator = Comparator.naturalOrder();
 
         List<Integer> numbers = new ArrayList<>();
         for (int i = 0; i < 10; i++) {

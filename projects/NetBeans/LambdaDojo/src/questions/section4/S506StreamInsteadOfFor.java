@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class S506StreamInsteadOfFor {
 
@@ -37,8 +39,14 @@ public class S506StreamInsteadOfFor {
                 result.put(lowerWord, count+1);
             }
         }
-        
         System.out.println(result);
+        
+        Map<String, Long> result1 = sentences.stream()
+                .flatMap(s -> Arrays.stream(s.split("[\\.,\\? ]")))
+                .map(String::toLowerCase)
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        
+        System.out.println(result1);
     }
 
     public static void main(String[] args) {

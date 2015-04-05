@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class S504StreamInsteadOfFor {
 
@@ -30,6 +31,10 @@ public class S504StreamInsteadOfFor {
                 words.add(word.toLowerCase());
             }
         }
+        
+        words = sentences.stream()
+                .flatMap(s -> Arrays.stream(s.split("[\\.,\\? ]")))
+                .collect(Collectors.toSet());
         
         System.out.println(words);
     }

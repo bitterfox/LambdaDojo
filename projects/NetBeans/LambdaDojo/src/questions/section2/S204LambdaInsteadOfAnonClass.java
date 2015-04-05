@@ -19,6 +19,9 @@ public class S204LambdaInsteadOfAnonClass {
             }
         };
         
+        function = s -> s.length();
+        function = String::length;
+        
         List<String> words = Arrays.asList("one thing was certain that the white kitten had had nothing to do with it".split(" "));
         double average = 0.0;
         for (String word: words) {

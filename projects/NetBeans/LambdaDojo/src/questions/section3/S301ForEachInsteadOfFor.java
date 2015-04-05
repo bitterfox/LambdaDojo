@@ -15,6 +15,7 @@ public class S301ForEachInsteadOfFor {
         for (String s: strings) {
             builder.append(s);
         }
+        strings.forEach(builder::append);
         System.out.println(builder.toString());
     }
 

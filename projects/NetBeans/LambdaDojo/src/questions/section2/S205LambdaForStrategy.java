@@ -34,6 +34,8 @@ public class S205LambdaForStrategy {
                 System.out.println(value);
             }
         });
+        container.output(value -> System.out.println(value));
+        container.output(System.out::println);
         
         final String filename = "container.txt";
         container.output(new Consumer<String>() {
@@ -48,6 +50,17 @@ public class S205LambdaForStrategy {
                 }
             }
         });
+        container.output(
+                value ->
+                {
+                    try {
+                        Path path = Paths.get(filename);
+                        Files.write(path, value.getBytes());
+                    } catch (IOException ex) {
+                        // 例外処理
+                        System.err.println("printに失敗しました");
+                    }
+                });
     }
 
     public static void main(String... args) {
